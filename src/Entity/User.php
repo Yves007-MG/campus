@@ -46,6 +46,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $username;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $lastLogin;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,6 +143,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getLastLogin(): ?\DateTimeInterface
+    {
+        return $this->lastLogin;
+    }
+
+    public function setLastLogin(?\DateTimeInterface $lastLogin): self
+    {
+        $this->lastLogin = $lastLogin;
 
         return $this;
     }

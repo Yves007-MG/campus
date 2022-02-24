@@ -17,4 +17,14 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    /**
+     * @Route("/list", name="list")
+     */
+    public function list(): Response
+    {
+        return $this->render('backOffice/home/index.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }
