@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
+use Omines\DataTablesBundle\DataTable;
 use Omines\DataTablesBundle\DataTableFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -35,15 +36,15 @@ class BaseController extends AbstractController
     public function __construct(
         EntityManagerInterface      $manager,
         UserPasswordHasherInterface $hasher,
-        SessionInterface            $session
-//        DataTableFactory $dataTableFactory
+        SessionInterface            $session,
+        DataTableFactory $dataTableFactory
     )
     {
         $this->session          = $session;
         $this->hasher           = $hasher;
         $this->manager          = $manager;
 
-//        $this->dataTableFactory = $dataTableFactory;
+        $this->dataTableFactory = $dataTableFactory;
     }
 
 
@@ -59,6 +60,7 @@ class BaseController extends AbstractController
      */
     protected function createDataTable($dataTableType, array $options = []): DataTable
     {
+
         return $this->dataTableFactory->createFromType($dataTableType, $options);
     }
 

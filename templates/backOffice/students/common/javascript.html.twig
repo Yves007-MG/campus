@@ -1,0 +1,11 @@
+<script>
+    $(function() {
+        // btnDelete(".delete", "#category-modal-delete", '#categories')
+
+        $('#students').initDataTables({{ datatable_settings(datatable) }}, {
+            language: {
+                url: "https://cdn.datatables.net/plug-ins/1.10.24/i18n/fr_fr.json"
+            },
+        }).then(function(dt) {});
+    });
+</script>

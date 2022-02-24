@@ -1,8 +1,9 @@
-{% extends "base.html.twig" %}
-{% block title %}MoCab - Liste des utilisateurs
+{% extends "backOffice/base.html.twig" %}
+{% block title %} - Liste des utilisateurs
 {% endblock %}
 
 {% block body %}
+{#    {{ dump(datatable) }}#}
     <body
             class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
     <!-- BEGIN: Content-->
@@ -20,7 +21,7 @@
 
                     </div>
                     <div class="card-body">
-                        <div id="users" class="table-responsive"></div>
+                        <div id="students" class="table-responsive"></div>
                     </div>
                 </div>
                 <!-- users list ends -->
@@ -36,17 +37,38 @@
     </body>
 
 {% endblock %}
-{% block javascripts %}
-    <script>
-        $(function () {
-            // btnDelete(".delete", "#user-modal-delete", '#users')
-            // hideModal(".cancel", "#user-modal-delete")
 
-            $('#users').initDataTables({{ datatable_settings(datatable) }}, {
-                language: {
-                    url: "https://cdn.datatables.net/plug-ins/1.10.24/i18n/fr_fr.json"
-                }
-            }).then(function (dt) {});
-        })
-    </script>
+
+{#{% block javascripts %}#}
+
+{#   #}
+{#    <script src="{{ asset('bundles/datatables/js/datatables.js') }}"></script>#}
+
+{#    <script>#}
+{#        $(function () {#}
+{#            let datatableSettings = {{ datatable_settings(datatable) }};#}
+{#            datatableSettings.url = window.location.origin + window.location.pathname + window.location.search;#}
+
+{#            $('#students').initDataTables(datatableSettings, {#}
+{#                "scrollX": true,#}
+{#                buttons: [],#}
+{#            }).then(function (dt) {#}
+{#                reinitRenderForDatatable(dt,datatableSettings)#}
+
+{#                $(document).on("click", "#datatable-container tbody tr td", function () {#}
+{#                    // Si le column n'as pas de class ou si sa class ne contient pas preventClick on le redirige#}
+{#                    // if (!$(this).attr('class') || ($(this).attr('class') && !$(this).attr('class').includes('preventClick'))) {#}
+{#                    //     var data = dt.row($(this).parent()).data();#}
+{#                    //     window.location.href = data.href#}
+{#                    // }#}
+{#                });#}
+
+{#            });#}
+{#        });#}
+{#    </script>#}
+{#{% endblock %}#}
+
+{% block javascripts %}
+{#    {{ include('common/datatable-script.html.twig') }}#}
+    {{ include('backOffice/students/common/javascript.html.twig') }}
 {% endblock %}

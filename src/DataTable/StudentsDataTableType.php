@@ -40,6 +40,8 @@ class StudentsDataTableType extends BaseController implements  DataTableTypeInte
                  ->from(Students::class,'s')
                  ->select('s');
              }
+
+
         ]);
     }
 }
